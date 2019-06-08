@@ -1,0 +1,5 @@
+@mixin bold-text($px, $color: #ffffff) {
+  font-weight: bold;
+  color: $color;
+  font-size: $px + px;
+}

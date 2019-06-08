@@ -1,0 +1,58 @@
+.top-msg {
+  // margin-bottom: 20px;
+}
+
+.wrap {
+  height: 100vh;
+  width: 100vw;
+
+  &__sidebar {
+    float: left;
+    height: 100%;
+    width: 300px;
+    background-color: #2f3e51;
+
+    &__head {
+      padding: $pad_lr20;
+      height: $head_height;
+      line-height: $head_height;
+      background-color: #253141;
+      @include bold-text(16);
+    }
+
+    &__body {
+      padding: $pad_lr20;
+
+      &__group {
+        padding-top: 20px;
+        padding-bottom: 40px; 
+
+        &--bold-15-white {
+          @include bold-text(15);
+          padding-bottom: 5px;
+        }
+        &--bold-11-white {
+          @include bold-text(11);
+        }
+      }
+
+    }
+  }
+
+  &__contents {
+    float: right;
+    height: 100%;
+    width: calc(100vw - 300px);
+
+    &__head {
+
+    }
+    &__body {
+
+    }
+    &__foot {
+
+    }
+  }
+
+}
