@@ -79,8 +79,11 @@
     padding: $side_padding40;
   }
 
-  &__head-group-box {
-    // @include auto_align_text(calc(#{head_height} - 1px));
+  &__head-group-box--left {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   &__head-group-name {
@@ -97,8 +100,16 @@
     color: #999999;
   }
 
+  &__head-group-box--right {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   &__head-group-edit-btn {
     @include auto_align_text(40px);
+    display: block;
+    margin-top: 28px;
     padding: $side_padding20;
     border: solid 1px #38aef0;
     color: #38aef0;

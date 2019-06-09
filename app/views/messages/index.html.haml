@@ -30,11 +30,13 @@
           まだメッセージがありません
   .contents
     .contents__head
-      .contents__head-group-box
+      .contents__head-group-box--left
         %p.contents__head-group-name
           test-group
         %p.contents__head-group-members
           test
-      =link_to "Edit", "/groups/1/edit", class: "contents__head-group-edit-btn"
+      .contents__head-group-box--right
+        =link_to "Edit", "/groups/1/edit", class: "contents__head-group-edit-btn"
     .contents__body
     .contents__foot
+
