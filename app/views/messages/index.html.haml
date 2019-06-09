@@ -1,17 +1,40 @@
 .top-msg
 .wrap
-  .wrap__sidebar
-    .wrap__sidebar__head
-      test-user
-    .wrap__sidebar__body
-      .wrap__sidebar__body__group
-        .wrap__sidebar__body__group--bold-15-white
+  .sidebar
+    .sidebar__head
+      .sidebar__head-user-box
+        %p.sidebar__head-user-name<>
+          test-user
+        %ul.sidebar__head-user-list
+          %li.sidebar__head-user-listitem
+            =link_to "/groups/new", class: "sidebar__head-btn" do
+              = fa_icon 'edit', class: "sidebar__head-btn--icon"
+          %li.sidebar__head-user-listitem
+            =link_to "/users/1/edit", class: "sidebar__head-btn" do
+              = fa_icon 'cog', class: "sidebar__head-btn--icon"
+    .sidebar__body
+      .sidebar__chatgroup
+        .sidebar__chatgroup--bold-15-white
           test-group
-        .wrap__sidebar__body__group--bold-11-white
+        .sidebar__chatgroup--bold-11-white
           さようなら
-  .wrap__contents
-    .wrap__contents__head
-    .wrap__contents__body
-    .wrap__contents__foot
-
-  
+      .sidebar__chatgroup
+        .sidebar__chatgroup--bold-15-white
+          sample-group
+        .sidebar__chatgroup--bold-11-white
+          hello!
+      .sidebar__chatgroup
+        .sidebar__chatgroup--bold-15-white
+          example
+        .sidebar__chatgroup--bold-11-white
+          まだメッセージがありません
+  .contents
+    .contents__head
+      .contents__head-group-box
+        %p.contents__head-group-name
+          test-group
+        %p.contents__head-group-members
+          test
+      =link_to "Edit", "/groups/1/edit", class: "contents__head-group-edit-btn"
+    .contents__body
+    .contents__foot
