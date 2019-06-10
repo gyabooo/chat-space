@@ -34,9 +34,17 @@
         %p.contents__head-group-name
           test-group
         %p.contents__head-group-members
-          test
+          Member: test
       .contents__head-group-box--right
         =link_to "Edit", "/groups/1/edit", class: "contents__head-group-edit-btn"
     .contents__body
+      .contents__body-chat-box
+        .contents__body-chat-user
+          %p.contents__body-chat-username
+            test-user
+          %p.contents__body-chat-date
+            2019/06/08(Sun) 00:00:00
+        .contents_body-chat-msg
+          こんにちは！
     .contents__foot
 
