@@ -3,7 +3,7 @@
 }
 
 .top-msg {
-  background-color: $light_blue_color;
+  background-color: $light_blue;
 }
 
 .wrap {
@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: flex-start;
   height: 100vh;
-  width: 300px;
+  width: $sidebar_width;
   background-color: #2f3e51;
 
   &__head {
@@ -32,8 +32,6 @@
 
       &__items {
         display: flex;
-        padding: 0;
-        margin: 0;
       }
       &__item {
         padding-left: 5px;
@@ -53,11 +51,11 @@
       padding-top: 20px;
       padding-bottom: 40px; 
 
-      &__name--bold-15-white {
+      &__name {
         @include bold_font(15px);
         padding-bottom: 5px;
       }
-      &__info--bold-11-white {
+      &__info {
         @include bold_font(11px);
       }
     }
@@ -69,11 +67,11 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  width: calc(100vw - 300px);
-  overflow: hidden;
+  width: calc(100vw - #{$sidebar_width});
 
   &__head {
-    height: calc(#{$head_height} - 1px);
+    @include fit;
+    height: $head_height;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,25 +82,23 @@
 
     .current-group {
       &--left {
-        width: 100%;
-        height: 100%;
+        @include wh100percent;
       }
       &--right {
         height: 100%;
       }
       &__name {
         @include auto_align_text(20px);
-        font-size: 20px;
-        color: #333333;
+        @include normal_font(20px, #333333);
         padding-top: 35px;
         padding-bottom: 15px;
       }
       &__members {
         @include auto_align_text(12px);
-        font-size: 12px;
-        color: $submsg_color;
+        @include normal_font(12px, $message_light_color);
       }
       &__btn {
+        @include fit;
         @include auto_align_text(40px);
         display: block;
         margin-top: 28px;
@@ -116,9 +112,8 @@
 
   &__chat-messages {
     height: 100vh;
-    width: calc(100% + 17px);
     padding-top: 46px;
-    background-color: $msg_back_color;
+    background-color: $message_bg_color;
     overflow-y: scroll;
 
     .chat-message-container {
@@ -133,29 +128,26 @@
         padding-bottom: 10px;
       }
       &__username {
-        @include bold_font(16px, $msg_color);
+        @include bold_font(16px, $message_color);
       }
       &__date {
         padding-left: 10px;
-        font-size: 12px;
-        color: $submsg_color;
+        @include normal_font(12px, $message_light_color);
       }
       &__message {
-        font-size: 14px;
-        color: $msg_color;
+        @include normal_font(14px, $message_color);
       }
     }
   }
 
   &__foot {
     padding: 20px 40px;
-    background-color: lighten($submsg_color, 30%);
+    background-color: lighten($message_light_color, 30%);
     flex-shrink: 0;
 
     .chat-form {
       display: flex;
-      height: 100%;
-      width: 100%;
+      @include wh100percent;
 
       &__upload {
         position: relative;
@@ -177,15 +169,14 @@
         }
       }
       &__message {
-        width: 100%;
-        font-size: 16px;
-        color: $msg_color;
-        border-style: none;
-        padding-left: 10px;
+        @include normal_font(16px, $message_color);
         height: 100%;
         width: calc(100% - 10px);
+        border-style: none;
+        padding-left: 10px;
       }
       &__btn {
+        @include fit;
         background-color: $btn_color;
         color: $white;
         padding: $side_padding20;

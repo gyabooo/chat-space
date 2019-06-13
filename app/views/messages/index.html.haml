@@ -16,14 +16,14 @@
       - @chat_groups.each do |chat_group|
         = render partial: 'chat_group', locals: { chat_group: chat_group }
   .contents
-    .contents__head
+    .contents__head.contents__head--fit
       .current-group--left
         %p.current-group__name
           test-group
         %p.current-group__members
           Member: test
       .current-group--right
-        =link_to "Edit", "/groups/1/edit", class: "current-group__btn", method: :post
+        =link_to "Edit", "/groups/1/edit", class: "current-group__btn current-group__btn--fit", method: :post
     .contents__chat-messages
       - @chat_messages.each do |chat_message|
         = render partial: 'chat_message', locals: { chat_message: chat_message }
@@ -34,4 +34,4 @@
           %label.chat-form__upload--label{for: "chat-form__upload-icon-id"}
             = fa_icon 'image', class: "chat-form__upload--icon"
             = file_field_tag 'chat-form__upload-icon-id', class: "chat-form__upload--hidden"
-        = submit_tag "Send", class: "chat-form__btn"
+        = submit_tag "Send", class: "chat-form__btn chat-form__btn--fit"

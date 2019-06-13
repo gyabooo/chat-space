@@ -1,0 +1,26 @@
+@mixin auto_align_text($height) {
+  height: $height;
+  line-height: $height;
+}
+
+@mixin bold_font($px, $color: $white) {
+  font-weight: bold;
+  color: $color;
+  font-size: $px;
+}
+
+@mixin normal_font($px, $color: $white) {
+  color: $color;
+  font-size: $px;
+}
+
+@mixin wh100percent {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin fit {
+  &--fit {
+    box-sizing: border-box;
+  }
+}
