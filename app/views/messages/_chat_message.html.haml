@@ -1,0 +1,8 @@
+.chat-message-container
+  .chat-message__info
+    %p.chat-message__username
+      = chat_message[:username]
+    %p.chat-message__date
+      = chat_message[:date]
+  .chat-message__message
+    = chat_message[:message]

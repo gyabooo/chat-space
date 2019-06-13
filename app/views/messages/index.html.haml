@@ -12,22 +12,9 @@
           %li.sidebar__head-user-listitem
             =link_to "/users/1/edit", class: "sidebar__head-btn" do
               = fa_icon 'cog', class: "sidebar__head-btn--icon"
-    .sidebar__body
-      .sidebar__chatgroup
-        .sidebar__chatgroup--bold-15-white
-          test-group
-        .sidebar__chatgroup--bold-11-white
-          さようなら
-      .sidebar__chatgroup
-        .sidebar__chatgroup--bold-15-white
-          sample-group
-        .sidebar__chatgroup--bold-11-white
-          hello!
-      .sidebar__chatgroup
-        .sidebar__chatgroup--bold-15-white
-          example
-        .sidebar__chatgroup--bold-11-white
-          まだメッセージがありません
+    .sidebar__chat-groups
+      - @chat_groups.each do |chat_group|
+        = render partial: 'chat_group', locals: { chat_group: chat_group }
   .contents
     .contents__head
       .contents__head-group-box--left
@@ -36,15 +23,15 @@
         %p.contents__head-group-members
           Member: test
       .contents__head-group-box--right
-        =link_to "Edit", "/groups/1/edit", class: "contents__head-group-edit-btn"
-    .contents__body
-      .contents__body-chat-box
-        .contents__body-chat-user
-          %p.contents__body-chat-username
-            test-user
-          %p.contents__body-chat-date
-            2019/06/08(Sun) 00:00:00
-        .contents_body-chat-msg
-          こんにちは！
+        =link_to "Edit", "/groups/1/edit", class: "contents__head-group-edit-btn", method: :post
+    .contents__chat-messages
+      - @chat_messages.each do |chat_message|
+        = render partial: 'chat_message', locals: { chat_message: chat_message }
     .contents__foot
-
+      = form_tag "/groups/1/messages", class: "contents__foot-form" do
+        .upload-box
+          = text_field_tag "message", '',class: "contents__foot-message", placeholder: "type a message"
+          %label.upload-box--label{for: "upload-icon-id"}
+            = fa_icon 'image', class: "upload-box--icon"
+            = file_field_tag 'upload-icon-id', class: "upload-box--hidden"
+        = submit_tag "Send", class: "contents__foot-btn"
