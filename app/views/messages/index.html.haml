@@ -2,36 +2,36 @@
 .wrap
   .sidebar
     .sidebar__head
-      .sidebar__head-user-box
-        %p.sidebar__head-user-name<>
+      .chat-user
+        %p.chat-user__name<>
           test-user
-        %ul.sidebar__head-user-list
-          %li.sidebar__head-user-listitem
-            =link_to "/groups/new", class: "sidebar__head-btn" do
-              = fa_icon 'edit', class: "sidebar__head-btn--icon"
-          %li.sidebar__head-user-listitem
-            =link_to "/users/1/edit", class: "sidebar__head-btn" do
-              = fa_icon 'cog', class: "sidebar__head-btn--icon"
+        %ul.chat-user__items
+          %li.chat-user__item
+            =link_to "/groups/new", class: "chat-user__btn" do
+              = fa_icon 'edit', class: "chat_user__btn--icon"
+          %li.chat-user__item
+            =link_to "/users/1/edit", class: "chat-user__btn" do
+              = fa_icon 'cog', class: "chat_user__btn--icon"
     .sidebar__chat-groups
       - @chat_groups.each do |chat_group|
         = render partial: 'chat_group', locals: { chat_group: chat_group }
   .contents
     .contents__head
-      .contents__head-group-box--left
-        %p.contents__head-group-name
+      .current-group--left
+        %p.current-group__name
           test-group
-        %p.contents__head-group-members
+        %p.current-group__members
           Member: test
-      .contents__head-group-box--right
-        =link_to "Edit", "/groups/1/edit", class: "contents__head-group-edit-btn", method: :post
+      .current-group--right
+        =link_to "Edit", "/groups/1/edit", class: "current-group__btn", method: :post
     .contents__chat-messages
       - @chat_messages.each do |chat_message|
         = render partial: 'chat_message', locals: { chat_message: chat_message }
     .contents__foot
-      = form_tag "/groups/1/messages", class: "contents__foot-form" do
-        .upload-box
-          = text_field_tag "message", '',class: "contents__foot-message", placeholder: "type a message"
-          %label.upload-box--label{for: "upload-icon-id"}
-            = fa_icon 'image', class: "upload-box--icon"
-            = file_field_tag 'upload-icon-id', class: "upload-box--hidden"
-        = submit_tag "Send", class: "contents__foot-btn"
+      = form_tag "/groups/1/messages", class: "chat-form" do
+        .chat-form__upload
+          = text_field_tag "message", '',class: "chat-form__message", placeholder: "type a message"
+          %label.chat-form__upload--label{for: "chat-form__upload-icon-id"}
+            = fa_icon 'image', class: "chat-form__upload--icon"
+            = file_field_tag 'chat-form__upload-icon-id', class: "chat-form__upload--hidden"
+        = submit_tag "Send", class: "chat-form__btn"
