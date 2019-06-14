@@ -1,0 +1,35 @@
+.top-msg
+.wrap
+  .sidebar
+    .sidebar__head
+      .chat-user
+        %p.chat-user__name<>
+          test-user
+        %ul.chat-user__items
+          %li.chat-user__item
+            =link_to "#", class: "chat-user__btn" do
+              = fa_icon 'edit', class: "chat_user__btn--icon"
+          %li.chat-user__item
+            =link_to "#", class: "chat-user__btn" do
+              = fa_icon 'cog', class: "chat_user__btn--icon"
+    .sidebar__chat-groups
+      = render partial: 'chat_group', collection: @chat_groups
+  .contents
+    .contents__head.contents__head--fit
+      .current-group--left
+        %p.current-group__name
+          test-group
+        %p.current-group__members
+          Member: test
+      .current-group--right
+        =link_to "Edit", "#", class: "current-group__btn current-group__btn--fit", method: :post
+    .contents__chat-messages
+      = render partial: 'chat_message', collection: @chat_messages
+    .contents__foot
+      = form_tag "#", class: "chat-form" do
+        .chat-form__upload
+          = text_field_tag "message", '', class: "chat-form__message", placeholder: "type a message"
+          %label.chat-form__upload--label{for: "chat-form__upload-icon-id"}
+            = fa_icon 'image', class: "chat-form__upload--icon"
+            = file_field_tag 'chat-form__upload-icon-id', class: "chat-form__upload--hidden"
+        = submit_tag "Send", class: "chat-form__btn chat-form__btn--fit"

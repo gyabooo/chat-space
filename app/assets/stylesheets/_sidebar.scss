@@ -1,0 +1,48 @@
+.sidebar {
+  @include flex-column;
+  height: 100vh;
+  width: $sidebar_width;
+  background-color: #2f3e51;
+
+  &__head {
+    @include side_padding(20px);
+    background-color: #253141;
+    flex-shrink: 0;
+
+    .chat-user {
+      @include bold_font(16px);
+      @include auto_align_text($head_height);
+      display: flex;
+      justify-content: space-between;
+
+      &__items {
+        display: flex;
+      }
+      &__item {
+        padding-left: 5px;
+      }
+      &__btn {
+        text-decoration: none;
+        color: $white;
+      }
+    }
+  }
+
+  &__chat-groups {
+    @include side_padding(20px);
+    overflow-y: scroll;
+
+    .chat-group {
+      padding-top: 20px;
+      padding-bottom: 40px; 
+
+      &__name {
+        @include bold_font(15px);
+        padding-bottom: 5px;
+      }
+      &__info {
+        @include bold_font(11px);
+      }
+    }
+  }
+}

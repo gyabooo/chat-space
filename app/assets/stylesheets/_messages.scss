@@ -1,0 +1,15 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.top-msg {
+  background-color: $light_blue;
+}
+
+.wrap {
+  display: flex;
+  overflow: -moz-scrollbars-none;
+}
+
+@import "sidebar";
+@import "contents";
