@@ -13,8 +13,7 @@
             =link_to "#", class: "chat-user__btn" do
               = fa_icon 'cog', class: "chat_user__btn--icon"
     .sidebar__chat-groups
-      - @chat_groups.each do |chat_group|
-        = render partial: 'chat_group', locals: { chat_group: chat_group }
+      = render partial: 'chat_group', collection: @chat_groups
   .contents
     .contents__head.contents__head--fit
       .current-group--left
@@ -25,8 +24,7 @@
       .current-group--right
         =link_to "Edit", "#", class: "current-group__btn current-group__btn--fit", method: :post
     .contents__chat-messages
-      - @chat_messages.each do |chat_message|
-        = render partial: 'chat_message', locals: { chat_message: chat_message }
+      = render partial: 'chat_message', collection: @chat_messages
     .contents__foot
       = form_tag "#", class: "chat-form" do
         .chat-form__upload
