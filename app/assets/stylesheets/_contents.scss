@@ -1,0 +1,119 @@
+.contents {
+  @include flex-column;
+  height: 100vh;
+  width: calc(100vw - #{$sidebar_width});
+
+  &__head {
+    @include fit;
+    @include side_padding(40px);
+    height: $head_height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid #eeeeee;
+    background-color: $white;
+
+    .current-group {
+      &--left {
+        @include wh100percent;
+      }
+      &--right {
+        height: 100%;
+      }
+      &__name {
+        @include auto_align_text(20px);
+        @include normal_font(20px, #333333);
+        padding-top: 35px;
+        padding-bottom: 15px;
+      }
+      &__members {
+        @include auto_align_text(12px);
+        @include normal_font(12px, $message_light_color);
+      }
+      &__btn {
+        @include fit;
+        @include auto_align_text(40px);
+        @include side_padding(20px);
+        display: block;
+        margin-top: 28px;
+        border: solid 1px $btn_color;
+        color: $btn_color;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__chat-messages {
+    height: 100vh;
+    padding-top: 46px;
+    background-color: $message_bg_color;
+    overflow-y: scroll;
+
+    .chat-message-container {
+      padding: 0 40px 40px 40px;
+    }
+
+    .chat-message {
+      &__info {
+        display: flex;
+        align-items: center;
+        padding-bottom: 10px;
+      }
+      &__username {
+        @include bold_font(16px, $message_color);
+      }
+      &__date {
+        padding-left: 10px;
+        @include normal_font(12px, $message_light_color);
+      }
+      &__message {
+        @include normal_font(14px, $message_color);
+      }
+    }
+  }
+
+  &__foot {
+    flex-shrink: 0;
+    padding: 20px 40px;
+    background-color: lighten($message_light_color, 30%);
+
+    .chat-form {
+      @include wh100percent;
+      display: flex;
+
+      &__upload {
+        position: relative;
+        width: 100%;
+        height: $form_height;
+        margin-right: 15px;
+        
+        &--label {
+          position: absolute;
+          top: calc(#{$form_height} / 2);
+          left: calc(100% - 10px);
+          transform: translateX(-100%) translateY(-50%);
+        }
+        &--icon {
+          font-size: 20px;
+        }
+        &--hidden {
+          display: none;
+        }
+      }
+      &__message {
+        @include normal_font(16px, $message_color);
+        height: 100%;
+        width: calc(100% - #{$foot_message_pad_left});
+        border-style: none;
+        padding-left: $foot_message_pad_left;
+      }
+      &__btn {
+        @include fit;
+        @include side_padding(30px);
+        background-color: $btn_color;
+        color: $white;
+      }
+    }
+  }
+}
