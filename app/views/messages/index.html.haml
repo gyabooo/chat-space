@@ -1,16 +1,15 @@
-.top-msg
 .wrap
   .sidebar
     .sidebar__head
       .chat-user
         %p.chat-user__name<>
-          test-user
+          = current_user.name
         %ul.chat-user__items
           %li.chat-user__item
-            =link_to "#", class: "chat-user__btn" do
+            =link_to '#', class: "chat-user__btn" do
               = fa_icon 'edit', class: "chat_user__btn--icon"
           %li.chat-user__item
-            =link_to "#", class: "chat-user__btn" do
+            =link_to edit_user_path(current_user.id), class: "chat-user__btn" do
               = fa_icon 'cog', class: "chat_user__btn--icon"
     .sidebar__chat-groups
       = render partial: 'chat_group', collection: @chat_groups

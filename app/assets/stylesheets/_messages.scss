@@ -2,8 +2,18 @@
     display: none; 
 }
 
-.top-msg {
-  background-color: $light_blue;
+.flash-msg {
+  text-align: center;
+  &--notice {
+    @extend .flash-msg;
+    background-color: $light_blue;
+    color: $white;
+  }
+  &--alert {
+    @extend .flash-msg;
+    background-color: $orange;
+    color: $white;
+  }
 }
 
 .wrap {
@@ -11,5 +21,7 @@
   overflow: -moz-scrollbars-none;
 }
 
-@import "sidebar";
-@import "contents";
+@import "modules/group";
+@import "modules/user";
+@import "modules/sidebar";
+@import "modules/contents";
