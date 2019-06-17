@@ -30,18 +30,20 @@
 
   &__chat-groups {
     @include side_padding(20px);
+    @include atag_text-decoration_none;
+    padding-top: 20px;
     overflow-y: scroll;
 
     .chat-group {
-      padding-top: 20px;
       padding-bottom: 40px; 
 
       &__name {
-        @include bold_font(15px);
+        @include normal_font(15px);
         padding-bottom: 5px;
+        text-decoration: none;
       }
       &__info {
-        @include bold_font(11px);
+        @include normal_font(11px);
       }
     }
   }

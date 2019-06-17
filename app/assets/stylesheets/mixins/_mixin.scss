@@ -33,3 +33,9 @@
   display: flex;
   flex-direction: column;
 }
+
+@mixin atag_text-decoration_none {
+      & a {
+        text-decoration: none;
+      }
+}
