@@ -1,6 +1,9 @@
 class MessagesController < ApplicationController
   def index
-    @chat_messages = Message.where(group_id: params[:group_id])
+    @chat_messages = Group.find(params[:group_id]).messages.includes(:user).order(created_at: :asc)
+    # binding.pry
+    @chat_message = Message.new(group_id: params[:group_id])
+    # binding.pry
   end
 
   def create
@@ -10,6 +13,7 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.permit(:body, :group_id).merge(user_id: current_user.id)
+    parameter = params.require(:message).permit(:body, :image)
+    parameter.merge(group_id: params[:group_id], user_id: current_user.id)
   end
 end

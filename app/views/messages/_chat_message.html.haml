@@ -5,4 +5,6 @@
     %p.chat-message__date
       = chat_message.created_at
   .chat-message__message
-    = chat_message.body
+    %p=chat_message.body
+    - unless chat_message.image.file.nil?
+      = image_tag chat_message.image.url
