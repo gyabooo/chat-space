@@ -3,19 +3,18 @@
   .contents
     .contents__head.contents__head--fit
       .current-group--left
-        %p.current-group__name
-          test-group
+        %p.current-group__name=@chat_message.group.name
         %p.current-group__members
-          Member: test
+          = "Member : #{@chat_message.group.users.map {|user| user.name}.join(' ')}"
       .current-group--right
-        =link_to "Edit", edit_group_path(1), class: "current-group__btn current-group__btn--fit"
+        =link_to "Edit", edit_group_path(params[:group_id]), class: "current-group__btn current-group__btn--fit"
     .contents__chat-messages
       = render partial: 'chat_message', collection: @chat_messages
     .contents__foot
-      = form_tag "#", class: "chat-form" do
+      = form_for @chat_message, url: group_messages_path, html: {class: "chat-form"} do |f|
         .chat-form__upload
-          = text_field_tag "message", '', class: "chat-form__message", placeholder: "type a message"
-          %label.chat-form__upload--label{for: "chat-form__upload-icon-id"}
-            = fa_icon 'image', class: "chat-form__upload--icon"
-            = file_field_tag 'chat-form__upload-icon-id', class: "chat-form__upload--hidden"
-        = submit_tag "Send", class: "chat-form__btn chat-form__btn--fit"
+          = f.text_field :body, class: "chat-form__message", placeholder: "type a message"
+          = f.label :image, '', class: 'chat-form__upload--label' do
+            = fa_icon 'image', class: 'chat-form__upload--icon'
+            = f.file_field :image, class: "chat-form__upload--hidden"
+        = f.submit "Send", class: "chat-form__btn chat-form__btn--fit"
