@@ -5,6 +5,6 @@
     .chat-group__info
       - unless chat_group.messages.empty?
         = chat_group.messages.last.body unless chat_group.messages.last.body.nil?
-        = image_tag chat_group.messages.last.image_url(:thumb) unless chat_group.messages.last.image.file.nil?
+        = image_tag chat_group.messages.last.image.url(:thumb) unless chat_group.messages.last.image.file.nil?
       - else
         まだメッセージはありません。
