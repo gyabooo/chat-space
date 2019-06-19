@@ -3,7 +3,7 @@
     %p.chat-message__username
       = chat_message.user.name
     %p.chat-message__date
-      = chat_message.created_at
+      = chat_message.created_at.strftime("%Y/%m/%d(%a) %H:%M:%S")
   .chat-message__message
     %p=chat_message.body
     - unless chat_message.image.file.nil?

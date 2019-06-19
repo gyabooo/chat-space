@@ -103,7 +103,7 @@
       }
       &__message {
         @include normal_font(16px, $message_color);
-        height: 100%;
+        height: $form_height;
         width: calc(100% - #{$foot_message_pad_left});
         border-style: none;
         padding-left: $foot_message_pad_left;

@@ -3,15 +3,15 @@
   .contents
     .contents__head.contents__head--fit
       .current-group--left
-        %p.current-group__name=@chat_message.group.name
+        %p.current-group__name=@group.name
         %p.current-group__members
-          = "Member : #{@chat_message.group.users.map {|user| user.name}.join(' ')}"
+          = "Member : #{@group.users.map {|user| user.name}.join(' ')}"
       .current-group--right
-        =link_to "Edit", edit_group_path(params[:group_id]), class: "current-group__btn current-group__btn--fit"
+        =link_to "Edit", edit_group_path(@group), class: "current-group__btn current-group__btn--fit"
     .contents__chat-messages
       = render partial: 'chat_message', collection: @chat_messages
     .contents__foot
-      = form_for @chat_message, url: group_messages_path, html: {class: "chat-form"} do |f|
+      = form_for [@group, @chat_message], html: {class: "chat-form"} do |f|
         .chat-form__upload
           = f.text_field :body, class: "chat-form__message", placeholder: "type a message"
           = f.label :image, '', class: 'chat-form__upload--label' do
