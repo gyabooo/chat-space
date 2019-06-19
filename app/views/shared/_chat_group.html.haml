@@ -3,4 +3,8 @@
     .chat-group__name
       = chat_group.name
     .chat-group__info
-      まだメッセージはありません。
+      - unless chat_group.messages.empty?
+        = chat_group.messages.last.body unless chat_group.messages.last.body.nil?
+        = image_tag chat_group.messages.last.image.url(:thumb) unless chat_group.messages.last.image.file.nil?
+      - else
+        まだメッセージはありません。
