@@ -1,14 +1,15 @@
 class MessagesController < ApplicationController
   def index
     @chat_messages = Group.find(params[:group_id]).messages.includes(:user).order(created_at: :asc)
-    # binding.pry
     @chat_message = Message.new(group_id: params[:group_id])
-    # binding.pry
   end
 
   def create
-    Message.create(message_params)
-    redirect_to action: :index
+    if Message.create(message_params).valid?
+      redirect_to group_messages_path
+    else
+      redirect_to group_messages_path, alert: 'メッセージを入力してください。'
+    end
   end
 
   private
