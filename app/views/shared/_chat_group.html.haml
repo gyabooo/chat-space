@@ -3,5 +3,5 @@
     .chat-group__name
       = chat_group.name
     .chat-group__info
-      = chat_group.show_last_message_body
-      = chat_group.show_last_message_img
+      - chat_group.show_last_message.each do |c|
+        = c
