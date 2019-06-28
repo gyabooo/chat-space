@@ -68,8 +68,7 @@ $(function () {
         $(".contents__chat-messages")
           .append(buildMainHTML(data))
           .animate({ scrollTop: $(".contents__chat-messages")[0].scrollHeight });
-        $("#message_body").val('');
-        $('#message_image').val('');
+        $('#new_message')[0].reset();
         $(".chat-form__btn").prop("disabled", false);
         // update sidebar
         var side_group = getCurrentSideGroup(url);
