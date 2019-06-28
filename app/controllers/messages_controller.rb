@@ -8,12 +8,18 @@ class MessagesController < ApplicationController
 
   def create
     @chat_message = @group.messages.new(message_params)
-    if @chat_message.save
-      redirect_to group_messages_path, notice: 'メッセージが送信されました'
-    else
-      @chat_messages = @group.messages.includes(:user)
-      flash.now[:alert] = 'メッセージを入力してください。'
-      render :index
+    respond_to do |format|
+      if @chat_message.save
+        format.html { redirect_to group_messages_path, notice: 'メッセージが送信されました' }
+        format.json
+      else
+        format.html {
+          @chat_messages = @group.messages.includes(:user)
+          flash.now[:alert] = 'メッセージを入力してください。'
+          render :index
+        }
+        format.json
+      end
     end
   end
 
