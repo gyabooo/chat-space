@@ -38,7 +38,8 @@ $(function () {
     return html + `</div>`
   }
 
-  function getCurSideGroup(url) {
+  // return current chose group on sidebar for jquery
+  function getCurrentSideGroup(url) {
     var chat_groups = $(".chat-group a");
     for (var i = 0; i < chat_groups.length; i++){
       if ($(chat_groups[i]).attr('href') === url) return $(chat_groups[i]);
@@ -62,23 +63,23 @@ $(function () {
         processData: false,
         contentType: false
       })
-        .done(function (data) {
-          // update main contents
-          $(".contents__chat-messages")
-            .append(buildMainHTML(data))
-            .animate({ scrollTop: $(".contents__chat-messages")[0].scrollHeight });
-          $("#message_body").val('');
-          $(".chat-form__btn").prop("disabled", false);
-          // update sidebar
-          var side_group = getCurSideGroup(url);
-          side_group.find(".chat-group__info").remove();
-          side_group.append(buildSideHTML(data));
-          console.log('OK');
-          // debugger;
-        })
-        .fail(function () {
-          alert('メッセージの送信に失敗しました')
-        })
+      .done(function (data) {
+        // update main contents
+        $(".contents__chat-messages")
+          .append(buildMainHTML(data))
+          .animate({ scrollTop: $(".contents__chat-messages")[0].scrollHeight });
+        $("#message_body").val('');
+        $('#message_image').val('');
+        $(".chat-form__btn").prop("disabled", false);
+        // update sidebar
+        var side_group = getCurrentSideGroup(url);
+        side_group.find(".chat-group__info").remove();
+        side_group.append(buildSideHTML(data));
+      })
+      .fail(function () {
+        alert('メッセージの送信に失敗しました');
+        $(".chat-form__btn").prop("disabled", false);
+      })
 
     })
   })
