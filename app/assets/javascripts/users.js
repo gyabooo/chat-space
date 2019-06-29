@@ -38,7 +38,6 @@ $(function () {
     var url = '/users';
     // members id variables
     var members = $("#chat-group-users > .chat-group-user > input");
-    var current_user_id = Number($(members[0]).val());
     var current_member_ids = [];
     // get members id
     $.each(members, function (i, user) {
@@ -57,7 +56,7 @@ $(function () {
       if (input === prev_input) return false;
       prev_input = input;
 
-      data = { search: input, current_user_id: current_user_id }
+      data = { search: input }
       // run ajax
       $.ajax({
         url: url,
