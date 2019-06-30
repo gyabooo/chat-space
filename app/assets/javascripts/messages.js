@@ -49,7 +49,7 @@ $(function () {
 
   var reloadMessages = function (current_url) {
     // get group id
-    var group_id = current_url.match(/\d+/);
+    var group_id = current_url.match(/\d+/).pop();
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     var last_message_id = $($(".chat-message-container:last-child")[0]).data('id');
     var api_url = `/groups/${group_id}/api/messages`;
