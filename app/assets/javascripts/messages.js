@@ -52,6 +52,8 @@ $(function () {
     var group_id = current_url.match(/\d+/).pop();
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     var last_message_id = $($(".chat-message-container:last-child")[0]).data('id');
+    if (last_message_id === undefined) return false;
+    
     var api_url = `/groups/${group_id}/api/messages`;
     $.ajax({
       //ルーティングで設定した通りのURLを指定
