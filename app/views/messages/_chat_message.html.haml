@@ -1,4 +1,4 @@
-.chat-message-container
+%div{ class: "chat-message-container", data: {id: "#{chat_message.id}"} }
   .chat-message__info
     %p.chat-message__username
       = chat_message.user.name
